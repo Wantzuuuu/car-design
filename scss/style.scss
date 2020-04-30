@@ -9,6 +9,27 @@ $lucky-color:#606379;
     background-size:cover;
     background-position:center bottom;
 }
+.sticky-section{
+    position:relative;
+    // position:-webkit-sticky;
+    left:0;
+}
+.sticky-section.sticky{
+    position:sticky;
+    position:-webkit-sticky;
+}
+.z-2{
+    z-index:2;
+}
+.z-3{
+    z-index:3;
+}
+.z-4{
+    z-index:4;
+}
+.z-5{
+    z-index:5;
+}
 // header
 header{
     width:100%;
@@ -66,10 +87,11 @@ header{
     } 
     @media(max-width:576px){
         h1{
-            font-size:40px;
+            font-size:37px;
         }
         p{
-            font-size:23px;
+            font-size:20px;
+            font-weight: 200;
         }
     }
     #firstText{
@@ -98,30 +120,6 @@ header{
         transform:translateY(-30%);
         opacity:0;
     }
-    // #headerTitle{
-    //     opacity: 1;
-    // }
-    // #headerContent{
-    //     opacity:1;
-    // }
-    // .header-content{
-    //     margin-top:-100vh;
-    //     .header-content-container{
-    //         width:100%;
-    //         height:200vh;
-    //         .header-content-sticky{
-    //             position:sticky;
-    //             top:50%;
-    //             left:0;
-    //         }
-    //     }
-    //     h1{
-    //         font-size:72px;
-    //     }
-    //     p{
-    //         font-size:22px;
-    //     }
-    // }
 } 
 header.active{
     opacity:1;
@@ -164,9 +162,17 @@ header.active{
     .section-one-box-3{
         background-color:$primary-color;
     }
+}
+
+// sectionOne end
+
+
+// sectionTwo
+#sectionTwo{
+    top:0;
     .inner-box-content-1 ,.inner-box-content-2{
         width:100%;
-        min-height:350px;
+        min-height:380px;
         color:white;
         padding:40px 60px;
         h1{
@@ -189,7 +195,7 @@ header.active{
     }
     .inner-box-img{
         width:100%;
-        min-height:350px;
+        min-height:380px;
     }
     .inner-box-content-1{
         background-color:$lucky-color;
@@ -198,5 +204,95 @@ header.active{
         background-color:$secondary-color;
     }
 }
+@media(max-width:576px){
+    #sectionTwo{
+        top:-100vh;
+        .inner-box-img{
+            min-height:45vh;
+            height:20vh;
+        }
+        .inner-box-content-1 ,.inner-box-content-2{
+            min-height: 55vh;
+        }
+    }
+}
+// sectionTwo end
 
-// sectionOne end
+// sectionThree
+#sectionThree{
+    top:0;
+    width:100%;
+    height:100vh;
+    overflow: hidden;
+    .bg-img{
+        position:absolute;
+        // position: -webkit-sticky;
+        z-index:-1;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+        width:100%;
+        height:100vh;
+        background-image:url("https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?ixlib=rb-1.2.1&auto=format&fit=crop&w=2089&q=80");
+    }
+}
+// sectionThree end
+.order-box{
+    position: relative;
+    z-index:10;
+    // top:100px;
+    // right:20%;
+    width:100%;
+    height:100vh;
+    // background-color:rgba(0,0,0,0.3); 
+    .order-container{
+        border-radius: 15px;
+        overflow: hidden;
+        // opacity:0;
+        // transform: translate(-120%,-20%) rotateY(70deg)  rotateX(60deg);
+        transform:translateX(-140%) translateY(-40%) rotateY(70deg)  rotateX(60deg);
+        .order-content{
+            position:relative;
+            width:100%;
+            height:300px;
+            padding:20px 50px;
+            background-color:rgba(0, 0, 0, 0.25);
+            color:white;
+            h1{
+                font-size:44px;
+            }
+            .bg-block{
+                position:absolute;
+                z-index:-1;
+                top:0;
+                left:0;
+                right:0;
+                bottom:0;
+                overflow:hidden;
+                &:after{
+                    content:"";
+                    position:absolute;
+                    top:-10px;
+                    left:-10px;
+                    right:-10px;
+                    bottom:-10px;
+                    background-position:center center;
+                    background-size: cover;
+                    background-attachment: fixed;
+                    background-image:url("https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?ixlib=rb-1.2.1&auto=format&fit=crop&w=2089&q=80");
+                    filter:blur(10px);
+                }
+            }
+        }
+        .order-img{
+            width:100%;
+            height:350px;
+        }
+    }
+    // .order-container.active{
+    //     transform: translate(0%,0%) rotateY(0deg)  rotateX(0deg);
+    // }
+    
+}
+

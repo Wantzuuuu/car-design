@@ -128,14 +128,19 @@ $(window).scroll(() => {
 
 // TODO: second count
 const sectionOne = $("#sectionOne").position().top;
+const maxKmHeight = $("#maxKm").offset().top;
+const secondsHeight = $("#seconds").offset().top;
+const min15Heihgt = $("#min15").offset().top;
+// console.log(sectionOne);
+// console.log(maxKmHeight, secondsHeight, min15Heihgt);
 let maxKm = 0;
 let seconds = 0;
 let min15 = 0;
 $(window).scroll(() => {
     let scroll = $(window).scrollTop();
-    if (scroll >= sectionOne - 580) {
-        for (let i = 0; i < 300; i++) {
-            if (maxKm >= 300) {
+    if (scroll >= maxKmHeight - 580) {
+        for (let i = 0; i < 350; i++) {
+            if (maxKm >= 350) {
                 break;
             }
             let yy = maxKm += 1
@@ -143,6 +148,8 @@ $(window).scroll(() => {
                 $("#maxKm").text(yy);
             }, 2 * i);
         }
+    }
+    if (scroll >= secondsHeight - 580) {
         for (let i = 0; i < 34; i++) {
             if (seconds >= 3.4) {
                 break;
@@ -151,17 +158,68 @@ $(window).scroll(() => {
             window.setTimeout(function () {
                 // console.log(q);
                 $("#seconds").text(q.toFixed(1));
-            }, 20 * i);
+            }, 25 * i);
         }
-        for (let i = 0; i < 168; i++) {
-            if (min15 >= 168) {
+    }
+    if (scroll >= min15Heihgt - 580) {
+        for (let i = 0; i < 565; i++) {
+            if (min15 >= 565) {
                 break;
             }
             let yy = min15 += 1
             window.setTimeout(function () {
                 $("#min15").text(yy);
-            }, 2 * i);
+            }, 1.5 * i);
         }
     }
 })
 // second count end
+
+// threeSection 
+const orderBoxHeight = $("#sectionThree").position().top;
+setTimeout(() => {
+    $(".sticky-section").addClass('sticky');
+}, 200);
+let orderTX = -140;
+let orderTY = -40;
+let orderRX = 60;
+let orderRY = 70;
+let lastScroll3 = 0;
+$(window).scroll(() => {
+    let scroll = $(window).scrollTop();
+    let num = scroll - lastScroll3;
+    if (scroll > lastScroll3) {
+        if (scroll > orderBoxHeight + 380) {
+            orderTX += num * 1;
+            orderTY += num * 0.5;
+            orderRX -= num * 0.25;
+            orderRY -= num * 0.25;
+            // console.log(orderTX);
+            if (orderTX >= 0) {
+                orderTX = 0;
+            }
+            if (orderTY >= 0) {
+                orderTY = 0;
+            }
+            if (orderRX <= 0) {
+                orderRX = 0;
+            }
+            if (orderRY <= 0) {
+                orderRY = 0;
+            }
+            // $(".order-container").css(
+            //     "transform", `translate(-${orderTX}%,-${orderTY}%) rotateY(${orderRY}deg)  rotateX(${orderRX}deg)`
+            // );
+            $(".order-container").css(
+                "transform", `translateX(${orderTX}%) translateY(${orderTY}%) rotateY(${orderRY}deg)  rotateX(${orderRX}deg)`
+            );
+            // $(".order-container").css(
+            //     "transform", `rotateY(${orderRY}deg)  rotateX(${orderRX}deg)`
+            // );
+        }
+    } else {
+
+    }
+    lastScroll3 = scroll;
+})
+// threeSection end
