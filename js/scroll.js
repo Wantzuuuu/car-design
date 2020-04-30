@@ -181,7 +181,7 @@ setTimeout(() => {
     $(".sticky-section").addClass('sticky');
 }, 200);
 let orderTX = -140;
-let orderTY = -40;
+let orderTY = -80;
 let orderRX = 60;
 let orderRY = 70;
 let lastScroll3 = 0;
@@ -190,8 +190,8 @@ $(window).scroll(() => {
     let num = scroll - lastScroll3;
     if (scroll > lastScroll3) {
         if (scroll > orderBoxHeight + 380) {
-            orderTX += num * 1;
-            orderTY += num * 0.5;
+            orderTX += num * 0.6;
+            orderTY += num * 0.3;
             orderRX -= num * 0.25;
             orderRY -= num * 0.25;
             // console.log(orderTX);

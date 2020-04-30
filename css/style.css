@@ -184,7 +184,7 @@ header.active {
   .order-box .order-container {
     border-radius: 15px;
     overflow: hidden;
-    transform: translateX(-140%) translateY(-40%) rotateY(70deg) rotateX(60deg); }
+    transform: translateX(-140%) translateY(-80%) rotateY(70deg) rotateX(60deg); }
     .order-box .order-container .order-content {
       position: relative;
       width: 100%;
