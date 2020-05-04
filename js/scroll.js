@@ -177,29 +177,41 @@ $(window).scroll(() => {
 
 // threeSection 
 const orderBoxHeight = $("#sectionThree").position().top;
+const windowWidth = $(window).width();
 setTimeout(() => {
     $(".sticky-section").addClass('sticky');
 }, 200);
 let orderTX = -140;
-let orderTY = -80;
+if (windowWidth < 576) {
+    orderTX = -77
+} else {
+    orderTX = -140;
+}
+let orderTY = -85;
 let orderRX = 60;
 let orderRY = 70;
+let orderOpacity = 0;
 let lastScroll3 = 0;
 $(window).scroll(() => {
     let scroll = $(window).scrollTop();
     let num = scroll - lastScroll3;
     if (scroll > lastScroll3) {
-        if (scroll > orderBoxHeight + 380) {
-            orderTX += num * 0.6;
-            orderTY += num * 0.3;
-            orderRX -= num * 0.25;
-            orderRY -= num * 0.25;
+        if (scroll > orderBoxHeight + 580) {
+            if (windowWidth < 576) {
+                orderTX += num * 0.12;
+            } else {
+                orderTX += num * 0.15;
+            }
+            orderTY += num * 0.172;
+            orderRX -= num * 0.08;
+            orderRY -= num * 0.08;
+            orderOpacity += num * 0.008;
             // console.log(orderTX);
             if (orderTX >= 0) {
                 orderTX = 0;
             }
-            if (orderTY >= 0) {
-                orderTY = 0;
+            if (orderTY >= 55) {
+                orderTY = 55;
             }
             if (orderRX <= 0) {
                 orderRX = 0;
@@ -207,18 +219,59 @@ $(window).scroll(() => {
             if (orderRY <= 0) {
                 orderRY = 0;
             }
-            // $(".order-container").css(
-            //     "transform", `translate(-${orderTX}%,-${orderTY}%) rotateY(${orderRY}deg)  rotateX(${orderRX}deg)`
-            // );
-            $(".order-container").css(
-                "transform", `translateX(${orderTX}%) translateY(${orderTY}%) rotateY(${orderRY}deg)  rotateX(${orderRX}deg)`
+            if (orderOpacity >= 1) {
+                orderOpacity = 1;
+            }
+            $(".order-container").css({
+                "transform": `translateX(${orderTX}%) translateY(${orderTY}%) rotateY(${orderRY}deg) rotateX(${orderRX}deg)`,
+                // "opacity": orderOpacity,
+            }
             );
-            // $(".order-container").css(
-            //     "transform", `rotateY(${orderRY}deg)  rotateX(${orderRX}deg)`
-            // );
         }
     } else {
-
+        if (scroll > orderBoxHeight + 580) {
+            if (windowWidth < 576) {
+                orderTX += num * 0.12;
+            } else {
+                orderTX += num * 0.15;
+            }
+            orderTY += num * 0.172;
+            orderRX -= num * 0.08;
+            orderRY -= num * 0.08;
+            orderOpacity += num * 0.0008;
+            // console.log(orderTY);
+            if (windowWidth < 576) {
+                if (orderTX <= -80) {
+                    orderTX = -80;
+                } else {
+                    if (orderTX <= -140) {
+                        orderTX = -140;
+                    }
+                }
+            }
+            if (orderTY <= -80) {
+                orderTY = -80;
+            }
+            if (orderRY >= 70) {
+                orderRY = 70;
+            }
+            if (orderRX >= 60) {
+                orderRX = 60;
+            }
+            if (orderOpacity <= 0.4) {
+                orderOpacity = 0.4;
+            }
+            $(".order-container").css({
+                "transform": `translateX(${orderTX}%) translateY(${orderTY}%) rotateY(${orderRY}deg) rotateX(${orderRX}deg)`,
+                // "opacity": orderOpacity,
+            }
+            )
+        }
+    }
+    if (scroll > orderBoxHeight + 150) {
+        $(".scroll-btn").addClass("remove");
+    } else {
+        $(".scroll-btn").removeClass("remove");
     }
     lastScroll3 = scroll;
 })
