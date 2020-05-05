@@ -3,6 +3,19 @@
 setTimeout(function () {
     $("#header").addClass("active");
 }, 100)
+setTimeout(function () {
+    $(".my-navbar").addClass("i-fix");
+    setTimeout(function () {
+        $(".item-box").addClass("i-fix");
+        $(".item-hamberger").addClass("i-fix");
+    }, 300)
+}, 100)
+$(".item-hamberger").click(() => {
+    $(".navbar-block").fadeIn();
+})
+$(".remove-block").click(() => {
+    $(".navbar-block").fadeOut();
+})
 // header opacity end
 
 const headerTarget = $("#header").position().top;
@@ -27,6 +40,14 @@ $(window).scroll(() => {
     let blockValue = (scroll - lastScroll) * 0.005
     let translateyScroll = (scroll - lastScroll) * 0.5;
     if (scroll > lastScroll) {
+        $(".item-box").removeClass("i-fix");
+        $(".item-hamberger").removeClass("i-fix");
+        // navbar
+        setTimeout(function () {
+            $(".my-navbar").removeClass("i-fix");
+        }, 300)
+        $(".navbar-block").fadeOut();
+        // navbar end
         if (scroll > headerTarget && scroll < secondTextTarget - 100) {
             opacityValue += scrollValue;
             headerBlockNumber += blockValue;
@@ -122,6 +143,14 @@ $(window).scroll(() => {
                 "transform": `translateY(${secondTextY}%)`
             })
         }
+        // navbar
+        $(".my-navbar").addClass("i-fix");
+        setTimeout(function () {
+            $(".item-box").addClass("i-fix");
+            $(".item-hamberger").addClass("i-fix");
+        }, 300);
+        $(".navbar-block").fadeOut();
+        // navbar end
     }
     lastScroll = scroll;
 })
@@ -181,13 +210,15 @@ const windowWidth = $(window).width();
 setTimeout(() => {
     $(".sticky-section").addClass('sticky');
 }, 200);
-let orderTX = -140;
+let orderTX = -110;
+let orderTY = -145;
 if (windowWidth < 576) {
     orderTX = -77
+    orderTY = -165;
 } else {
-    orderTX = -140;
+    orderTX = -110;
+    orderTY = -145;
 }
-let orderTY = -85;
 let orderRX = 60;
 let orderRY = 70;
 let orderOpacity = 0;
@@ -196,46 +227,73 @@ $(window).scroll(() => {
     let scroll = $(window).scrollTop();
     let num = scroll - lastScroll3;
     if (scroll > lastScroll3) {
-        if (scroll > orderBoxHeight + 580) {
-            if (windowWidth < 576) {
+        if (windowWidth < 576) {
+            if (scroll > orderBoxHeight + 280) {
                 orderTX += num * 0.12;
-            } else {
-                orderTX += num * 0.15;
+                orderTY += num * 0.15;
+                orderRX -= num * 0.08;
+                orderRY -= num * 0.08;
+                orderOpacity += num * 0.008;
+                // console.log(orderTX);
+                if (orderTX >= 0) {
+                    orderTX = 0;
+                }
+                if (orderTY >= -5) {
+                    orderTY = -5;
+                }
+                if (orderRX <= 0) {
+                    orderRX = 0;
+                }
+                if (orderRY <= 0) {
+                    orderRY = 0;
+                }
+                if (orderOpacity >= 1) {
+                    orderOpacity = 1;
+                }
+                $(".order-container").css({
+                    "transform": `translateX(${orderTX}%) translateY(${orderTY}%) rotateY(${orderRY}deg) rotateX(${orderRX}deg)`,
+                    // "opacity": orderOpacity,
+                }
+                );
             }
-            orderTY += num * 0.172;
-            orderRX -= num * 0.08;
-            orderRY -= num * 0.08;
-            orderOpacity += num * 0.008;
-            // console.log(orderTX);
-            if (orderTX >= 0) {
-                orderTX = 0;
+        } else {
+            if (scroll > orderBoxHeight + 500) {
+                orderTX += num * 0.121;
+                orderTY += num * 0.1256;
+                orderRX -= num * 0.08;
+                orderRY -= num * 0.08;
+                orderOpacity += num * 0.008;
+                // console.log(orderTX);
+                if (orderTX >= 0) {
+                    orderTX = 0;
+                }
+                if (orderTY >= -10) {
+                    orderTY = -10;
+                }
+                if (orderRX <= 0) {
+                    orderRX = 0;
+                }
+                if (orderRY <= 0) {
+                    orderRY = 0;
+                }
+                if (orderOpacity >= 1) {
+                    orderOpacity = 1;
+                }
+                $(".order-container").css({
+                    "transform": `translateX(${orderTX}%) translateY(${orderTY}%) rotateY(${orderRY}deg) rotateX(${orderRX}deg)`,
+                    // "opacity": orderOpacity,
+                }
+                );
             }
-            if (orderTY >= 55) {
-                orderTY = 55;
-            }
-            if (orderRX <= 0) {
-                orderRX = 0;
-            }
-            if (orderRY <= 0) {
-                orderRY = 0;
-            }
-            if (orderOpacity >= 1) {
-                orderOpacity = 1;
-            }
-            $(".order-container").css({
-                "transform": `translateX(${orderTX}%) translateY(${orderTY}%) rotateY(${orderRY}deg) rotateX(${orderRX}deg)`,
-                // "opacity": orderOpacity,
-            }
-            );
         }
     } else {
-        if (scroll > orderBoxHeight + 580) {
+        if (scroll < sectionFourHeight - 800) {
             if (windowWidth < 576) {
-                orderTX += num * 0.12;
+                orderTX += num * 0.1;
             } else {
-                orderTX += num * 0.15;
+                orderTX += num * 0.09;
             }
-            orderTY += num * 0.172;
+            orderTY += num * 0.16;
             orderRX -= num * 0.08;
             orderRY -= num * 0.08;
             orderOpacity += num * 0.0008;
@@ -243,15 +301,19 @@ $(window).scroll(() => {
             if (windowWidth < 576) {
                 if (orderTX <= -80) {
                     orderTX = -80;
-                } else {
-                    if (orderTX <= -140) {
-                        orderTX = -140;
-                    }
+                }
+                if (orderTY <= -165) {
+                    orderTY = -165;
+                }
+            } else {
+                if (orderTX <= -110) {
+                    orderTX = -110;
+                }
+                if (orderTY <= -145) {
+                    orderTY = -145;
                 }
             }
-            if (orderTY <= -80) {
-                orderTY = -80;
-            }
+
             if (orderRY >= 70) {
                 orderRY = 70;
             }
@@ -276,3 +338,5 @@ $(window).scroll(() => {
     lastScroll3 = scroll;
 })
 // threeSection end
+
+const sectionFourHeight = $("#sectionFour").offset().top;
