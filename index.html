@@ -15,24 +15,25 @@
 
 <body>
     <nav class="my-navbar">
-        <div class="logo">
-            GTR
+        <div id="logo" class="logo">
+            <a data-position="#header" href="#">
+                GTR
+            </a>
         </div>
         <div class="item-box">
-
-            <a href="#">
-                <div class="item">
-                    <i class="fas fa-car"></i>
-                    BRAND
-                </div>
-            </a>
-            <a href="#">
+            <a data-position="#sectionOne" href="#">
                 <div class="item">
                     <i class="fas fa-power-off"></i>
                     POWER
                 </div>
             </a>
-            <a href="#">
+            <a data-position="#sectionTwo" href="#">
+                <div class="item">
+                    <i class="fas fa-car"></i>
+                    BRAND
+                </div>
+            </a>
+            <a data-position="#sectionFour" href="#">
                 <div class="item">
                     <i class="fas fa-wrench"></i>
                     SERVICE
@@ -48,19 +49,19 @@
         <div class="navbar-block">
             <div class="item-block">
                 <div class="item">
-                    <a href="#">
-                        <i class="fas fa-car"></i>
-                        BRAND
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="#">
+                    <a data-position="#sectionOne" href="#">
                         <i class="fas fa-power-off"></i>
                         POWER
                     </a>
                 </div>
                 <div class="item">
-                    <a href="#">
+                    <a data-position="#sectionTwo" href="#">
+                        <i class="fas fa-car"></i>
+                        BRAND
+                    </a>
+                </div>
+                <div class="item">
+                    <a data-position="#sectionFour" href="#">
                         <i class="fas fa-wrench"></i>
                         SERVICE
                     </a>
@@ -178,8 +179,13 @@
                                     <div class="order-content">
                                         <div class="bg-block"></div>
                                         <h1 class="border-bottom mb-5">FUTURE</h1>
-                                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa eaque nisi
-                                            saepe vero sint delectus, praesentium officiis corporis sit cupiditate?</p>
+                                        <p>
+                                            邀請您一起來體會彎道加速的快感，從都會到山路都能有心跳加速的快感。
+                                            唯有開過才能感受車子的精髓所在。一起來體會歷史到現在的傳奇！
+                                        </p>
+                                        <button class="order-btn">
+                                            預約試乘
+                                        </button>
                                     </div>
                                     <div class="order-img">
                                         <img width="100%" height="100%"
@@ -195,34 +201,90 @@
         </div>
     </div>
     <!-- section-four -->
-    <section id="sectionFour"></section>
-    <!-- section-four end-->
-    <!-- <section id="two" class="mt-5">
-        <div class="container-fluid">
-            <div class="row justify-content-center">
-                <div class="col-12 col-md-10 col-lg-8">
-                    <div class="my-5 ml-5">
-                        <h5 class="d-inline">直逼超轉紅線區，</h5>
-                        <h5 class=" d-inline text-muted">性能調校的懸吊系統、優異操控性、令人振奮的加速度及帥氣有型的引擎蓋設計</h5>
+    <footer id="sectionFour">
+        <div class="bg-block"></div>
+        <div class="footer-content">
+            <div class="container-fluid">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-3">
+                        <div class="customer-data text-center">
+                            <h1 class="">
+                                <i class="fas fa-phone fa-3x"></i>
+                            </h1>
+                            <p>0000 1345 5421</p>
+                            <h6>Customer Service</h6>
+                        </div>
+                        <div class="customer-data text-center">
+                            <h1 class="">
+                                <i class="fas fa-map-marker-alt fa-3x"></i>
+                            </h1>
+                            <h6>198 Mulberry St, New York, NY 10036</h6>
+                        </div>
                     </div>
-                    <img width="100%" height="500px"
-                        src="https://images.unsplash.com/photo-1498887960847-2a5e46312788?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
-                        alt="">
+                    <div class="col-md-8">
+                        <div class="fix-car-content">
+                            <div class="row">
+                                <div class="col-md-6 align-self-center">
+                                    <div class="">
+                                        <h4>台北維修廠</h4>
+                                        <p>114台北市內湖區民權東路六段161231號</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="img-block">
+                                        <img src="https://images.unsplash.com/photo-1551522435-a13afa10f103?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
+                                            alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fix-car-content">
+                            <div class="row">
+                                <div class="col-md-6 align-self-center">
+                                    <div class="">
+                                        <h4>新竹維修廠</h4>
+                                        <p>300新竹市北區東大路二段</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="img-block">
+                                        <img src="https://images.unsplash.com/photo-1463541555616-ad5d33ef6339?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80"
+                                            alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fix-car-content">
+                            <div class="row">
+                                <div class="col-md-6 align-self-center">
+                                    <div class="">
+                                        <h4>台中維修廠</h4>
+                                        <p> 403台中市西區精誠路252226號</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="img-block">
+                                        <img src="https://images.unsplash.com/photo-1470880587080-599f3e4f0913?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
+                                            alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
-    <section id="three" class="mt-5">
-        <div class="container-fluid">
-            <div class="row justify-content-center">
-                <div class="col-12 col-md-10 col-lg-8">
-                    <img width="100%"
-                        src="https://images.unsplash.com/photo-1567808291548-fc3ee04dbcf0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
-                        alt="">
-                </div>
-            </div>
+        <div class="footer-text text-center">
+            COPYRIGHT© 2020 BY WAN.
+            <span>
+                僅供展示
+            </span>
+            <br>
+            圖片來源 Unsplash
         </div>
-    </section> -->
+    </footer>
+    <!-- section-four end-->
+
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="./js/scroll.js"></script>

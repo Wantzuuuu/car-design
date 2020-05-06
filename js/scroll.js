@@ -1,4 +1,27 @@
-
+// navbar animate
+$("#logo").click(function () {
+    console.log("s");
+})
+$(".my-navbar a").click(function (e) {
+    e.preventDefault();
+    let scrollTop = $(window).scrollTop();
+    let target = $(this).attr("data-position");
+    let position = $(target).position().top;
+    // console.log(position);
+    let num = Math.abs(position - scrollTop);
+    let timeValue = 0;
+    if (num <= 1500) {
+        timeValue = 800;
+    } else if (num >= 1501 && num < 4000) {
+        timeValue = 1000
+    } else {
+        timeValue = 2100;
+    }
+    $('html, body').stop().animate({
+        scrollTop: position
+    }, timeValue);
+})
+// navbar animate end
 // header opacity
 setTimeout(function () {
     $("#header").addClass("active");
@@ -39,6 +62,16 @@ $(window).scroll(() => {
     let scrollValue = (scroll - lastScroll) * 0.008;
     let blockValue = (scroll - lastScroll) * 0.005
     let translateyScroll = (scroll - lastScroll) * 0.5;
+    // navabr
+    if (scroll == 0) {
+        $(".my-navbar").addClass("i-fix");
+        setTimeout(function () {
+            $(".item-box").addClass("i-fix");
+            $(".item-hamberger").addClass("i-fix");
+        }, 300);
+        $(".navbar-block").fadeOut();
+    }
+    // navabr end
     if (scroll > lastScroll) {
         $(".item-box").removeClass("i-fix");
         $(".item-hamberger").removeClass("i-fix");
