@@ -1,7 +1,4 @@
 // navbar animate
-$("#logo").click(function () {
-    console.log("s");
-})
 $(".my-navbar a").click(function (e) {
     e.preventDefault();
     let scrollTop = $(window).scrollTop();
@@ -33,10 +30,10 @@ setTimeout(function () {
         $(".item-hamberger").addClass("i-fix");
     }, 300)
 }, 100)
-$(".item-hamberger").click(() => {
+$(".item-hamberger").click(function () {
     $(".navbar-block").fadeIn();
 })
-$(".remove-block").click(() => {
+$(".remove-block").click(function () {
     $(".navbar-block").fadeOut();
 })
 // header opacity end
@@ -57,19 +54,19 @@ let secondTextY = -30;
 // secondText end
 
 let lastScroll = 0
-$(window).scroll(() => {
+$(window).scroll(function () {
     let scroll = $(window).scrollTop();
     let scrollValue = (scroll - lastScroll) * 0.008;
     let blockValue = (scroll - lastScroll) * 0.005
     let translateyScroll = (scroll - lastScroll) * 0.5;
     // navabr
-    if (scroll == 0) {
-        $(".my-navbar").addClass("i-fix");
+    if (scroll <= 0) {
+        $(".my-navbar").stop().addClass("i-fix");
         setTimeout(function () {
-            $(".item-box").addClass("i-fix");
-            $(".item-hamberger").addClass("i-fix");
+            $(".item-box").stop().addClass("i-fix");
+            $(".item-hamberger").stop().addClass("i-fix");
         }, 300);
-        $(".navbar-block").fadeOut();
+        $(".navbar-block").stop().fadeOut();
     }
     // navabr end
     if (scroll > lastScroll) {
@@ -177,12 +174,12 @@ $(window).scroll(() => {
             })
         }
         // navbar
-        $(".my-navbar").addClass("i-fix");
+        $(".my-navbar").stop().addClass("i-fix");
         setTimeout(function () {
-            $(".item-box").addClass("i-fix");
-            $(".item-hamberger").addClass("i-fix");
+            $(".item-box").stop().addClass("i-fix");
+            $(".item-hamberger").stop().addClass("i-fix");
         }, 300);
-        $(".navbar-block").fadeOut();
+        $(".navbar-block").stop().fadeOut();
         // navbar end
     }
     lastScroll = scroll;
@@ -198,7 +195,7 @@ const min15Heihgt = $("#min15").offset().top;
 let maxKm = 0;
 let seconds = 0;
 let min15 = 0;
-$(window).scroll(() => {
+$(window).scroll(function () {
     let scroll = $(window).scrollTop();
     if (scroll >= maxKmHeight - 580) {
         for (let i = 0; i < 350; i++) {
@@ -240,7 +237,7 @@ $(window).scroll(() => {
 // threeSection 
 const orderBoxHeight = $("#sectionThree").position().top;
 const windowWidth = $(window).width();
-setTimeout(() => {
+setTimeout(function () {
     $(".sticky-section").addClass('sticky');
 }, 200);
 let orderTX = -110;
@@ -256,7 +253,7 @@ let orderRX = 60;
 let orderRY = 70;
 let orderOpacity = 0;
 let lastScroll3 = 0;
-$(window).scroll(() => {
+$(window).scroll(function () {
     let scroll = $(window).scrollTop();
     let num = scroll - lastScroll3;
     if (scroll > lastScroll3) {
